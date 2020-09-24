@@ -3,11 +3,11 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
+  UpdateDateColumn,
   ManyToOne,
   JoinColumn,
-  UpdateDateColumn,
 } from 'typeorm';
-import User from '@modules/users/infra/typeorm/entities/User';
+import User from './Users';
 
 @Entity('appointments')
 class Appointment {
@@ -25,10 +25,10 @@ class Appointment {
   date: Date;
 
   @CreateDateColumn()
-  created_at: Date;
+  created_at: string;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updated_at: string;
 }
 
 export default Appointment;
