@@ -12,9 +12,9 @@ export default class UsersController {
 
       const user = await createUser.execute({ name, email, password });
 
-      delete user.password;
+      const userResponse = { id: user.id, name: user.name };
 
-      return response.json(user);
+      return response.json(userResponse);
     } catch (err) {
       return response.status(400).json({ Error: err.message });
     }

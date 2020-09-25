@@ -1,5 +1,5 @@
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
-import User from '../../../models/User';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 export default interface IUsersRepository {
   // encontrar nome
