@@ -3,7 +3,7 @@ import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 
 import User from '@modules/users/infra/typeorm/entities/User';
-import IStorageProvider from '@shared/container/StorageProvider/models/IStorageProvider';
+import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
 import IUsersRepository from '../repositories/IUsersRepository';
 
 interface IRequestDTO {
@@ -30,7 +30,7 @@ export default class UpdateUserAvatarService {
     if (!user) {
       throw new AppError('Only authenticated users can update avatar.', 401);
     }
-
+    // se já existe,apaga o anterior
     if (user.avatar) {
       await this.storageProvider.deleteFile(user.avatar);
     }

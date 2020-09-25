@@ -13,7 +13,7 @@ export default class FakeStorageProvider implements IStorageProvider {
     const findIndex = this.storage.findIndex(
       storageFile => storageFile === file,
     );
-
+    // remove uma informação do array
     this.storage.splice(findIndex, 1);
   }
 }
