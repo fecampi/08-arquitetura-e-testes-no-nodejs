@@ -1,7 +1,10 @@
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import User from '@modules/users/infra/typeorm/entities/User';
+import IFindAllProvidersDto from '../dtos/IFindAllProvidersDTO';
 
 export default interface IUsersRepository {
+  // Encontrar todos sem ser o próprio usuário
+  findAllProviders(data: IFindAllProvidersDto): Promise<User[]>;
   // encontrar nome
   findById(id: string): Promise<User | undefined>;
   // encontrar por e-mail
