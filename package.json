@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "-": "^0.0.1",
+    "@types/mongodb": "^3.5.27",
     "bcryptjs": "^2.4.3",
     "celebrate": "^13.0.3",
     "cors": "^2.8.5",
@@ -20,6 +21,7 @@
     "express-async-errors": "^3.1.1",
     "handlebars": "^4.7.6",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.2",
     "multer": "^1.4.2",
     "nodemailer": "^6.4.11",
     "pg": "^8.3.3",
