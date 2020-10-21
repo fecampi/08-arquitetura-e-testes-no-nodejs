@@ -1,14 +1,15 @@
 import { injectable, inject } from 'tsyringe';
-import { getDaysInMonth, getDate } from 'date-fns';
+import { getDaysInMonth, getDate, isAfter } from 'date-fns';
+
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 
-interface IRequest {
+interface IRequestDTO {
   provider_id: string;
   month: number;
   year: number;
 }
 
-type IResponse = Array<{
+type IResponseDTO = Array<{
   day: number;
   available: boolean;
 }>;
@@ -24,7 +25,7 @@ export default class ListProviderMonthAvailabilityService {
     provider_id,
     year,
     month,
-  }: IRequest): Promise<IResponse> {
+  }: IRequestDTO): Promise<IResponseDTO> {
     const appointments = await this.appointmentsRepository.findAllInMonthFromProvider(
       {
         provider_id,
@@ -32,6 +33,7 @@ export default class ListProviderMonthAvailabilityService {
         month,
       },
     );
+
     // Retornar o numero de dias no mes
     const numberOfDaysInMonth = getDaysInMonth(new Date(year, month - 1));
     // montar um array a partir das opções
@@ -42,16 +44,22 @@ export default class ListProviderMonthAvailabilityService {
 
     // Dia com horários livres
     const availability = eachDayArray.map(day => {
+      // Momento atual(hoje).
+      const compareDate = new Date(year, month - 1, day, 23, 59, 59);
+
       const appointmentsInDay = appointments.filter(appointment => {
         return getDate(appointment.date) === day;
       });
 
       return {
         day,
-        available: appointmentsInDay.length < 10,
-        // 10hs de trabalho, ele verifica quais tem pelo menos um horário livre
+        available:
+          // verificar se new date e depois de compare date
+          isAfter(compareDate, new Date()) && appointmentsInDay.length < 10,
+        // 10hs de trabalho, ele verifica quais tem pelo menos um horário livre, e se a data é futura
       };
     });
+
     return availability;
   }
 }

@@ -13,6 +13,7 @@ export default class ProviderDayAvailabilityController {
     );
 
     const availability = await listProviderDayAvailability.execute({
+      // converter em numero pois eles vem como string.
       provider_id,
       day: Number(day),
       month: Number(month),

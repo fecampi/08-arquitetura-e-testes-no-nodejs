@@ -51,6 +51,7 @@ class CreateAppointmentService {
       );
     }
 
+    // verifica se tem agendamento no horário
     const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
       appointmentDate,
       provider_id,
