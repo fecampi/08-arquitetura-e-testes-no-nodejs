@@ -39,7 +39,6 @@ class AppointmentsRepository implements IAppointmentsRepository {
         getMonth(appointment.date) + 1 === month &&
         getYear(appointment.date) === year,
     );
-
     return appointments;
   }
 
@@ -66,7 +65,6 @@ class AppointmentsRepository implements IAppointmentsRepository {
     Object.assign(appointment, { id: v4(), date, provider_id, user_id });
 
     this.appointments.push(appointment);
-
     return appointment;
   }
 }
