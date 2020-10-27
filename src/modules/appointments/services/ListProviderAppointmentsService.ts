@@ -1,4 +1,4 @@
-import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
+import ICacheProvider from '@shared/providers/CacheProvider/models/ICacheProvider';
 import { classToClass } from 'class-transformer';
 import { injectable, inject } from 'tsyringe';
 

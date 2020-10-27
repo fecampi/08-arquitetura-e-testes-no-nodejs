@@ -1,5 +1,5 @@
 import { sign } from 'jsonwebtoken';
-import authConfig from '@config/auth';
+import authConfig from '@modules/users/providers/HashProvider/HashProviderConfig';
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';

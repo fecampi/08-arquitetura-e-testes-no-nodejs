@@ -1,6 +1,6 @@
 import { container } from 'tsyringe';
 
-import mailConfig from 'config/mail';
+import mailConfig from '@shared/providers/MailProvider/MailProviderConfig';
 import IMailProvider from './models/IMailProvider';
 
 import EtherealMailProvider from './implementations/EtherealMailProvider';

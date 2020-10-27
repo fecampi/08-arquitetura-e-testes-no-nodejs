@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
-import authConfig from '@config/auth';
+import authConfig from '@modules/users/providers/HashProvider/HashProviderConfig';
 import AppError from '@shared/errors/AppError';
 
 interface ITokenPlayLoad {

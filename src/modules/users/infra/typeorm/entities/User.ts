@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 
 import { Exclude, Expose } from 'class-transformer';
-import uploadConfig from '@config/upload';
+import uploadConfig from '@shared/providers/StorageProvider/StorageProviderConfig';
 
 @Entity('users')
 class User {
